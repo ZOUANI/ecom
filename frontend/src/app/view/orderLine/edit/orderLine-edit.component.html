@@ -1,0 +1,40 @@
+<div class="modal" tabindex="-1" role="dialog" style="display: block;background-color: #000000bf;">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">edit OrderLine </h5>
+        <button type="button" class="close" aria-label="Close" (click)="editHide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<div class="card col-md-12 mx-auto  p-md-2">
+   
+    <div class="card-body">
+        <div class="row">
+                <div class="col-md-12 py-2">
+                    <label>price</label>
+                    <input type="text" class="form-control" [placeholder]="orderLine.price" [(ngModel)] = "orderLine.price">
+                </div>
+            </div>
+                <div class="row m-md-2 p-md-1" >
+                    <label>command</label>
+                    <select class="form-control" [(ngModel)]="orderLine.commandVo.reference" >
+                        <option *ngFor="let p of commands" [ngValue]="p.reference" value="{{p.reference}}">{{p.reference}}</option>
+                    </select>
+                </div>
+                <div class="row m-md-2 p-md-1" >
+                    <label>product</label>
+                    <select class="form-control" [(ngModel)]="orderLine.productVo.reference" >
+                        <option *ngFor="let p of products" [ngValue]="p.reference" value="{{p.reference}}">{{p.reference}}</option>
+                    </select>
+                </div>
+        <div class="card-footer" >
+            <button class="form-control" (click)="editOrderLine()" >Edit</button>
+        </div>
+    </div>
+</div>
+       </div>
+	   </div>
+	   </div>
+	   </div>

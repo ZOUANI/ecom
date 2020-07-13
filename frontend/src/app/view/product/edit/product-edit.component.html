@@ -1,0 +1,90 @@
+     <app-product></app-product>
+<div class="card col-md-8 mx-auto  p-md-2">
+    <div class="card-header text-center font-weight-bold">Edit Products</div> 
+    <div class="card-body">
+            <div class="row my-1 ">
+                <label>Available Products</label>
+                <select class="form-control" [(ngModel)]="product.reference" (click)="findByreference(product.reference)" >
+                    <option *ngFor="let p of editableProducts" [ngValue]="p.reference" value="{{p.reference}}">{{p.reference}}</option>
+                </select>
+            </div>
+        
+                <div class="row py-2">
+                    <label>size</label>
+                    <input type="text" class="form-control" [placeholder]="product.size" [(ngModel)] = "product.size">
+                </div>
+                <div class="row py-2">
+                    <label>qteStock</label>
+                    <input type="text" class="form-control" [placeholder]="product.qteStock" [(ngModel)] = "product.qteStock">
+                </div>
+                <div class="row py-2">
+                    <label>label</label>
+                    <input type="text" class="form-control" [placeholder]="product.label" [(ngModel)] = "product.label">
+                </div>
+                <div class="row py-2">
+                    <label>price</label>
+                    <input type="text" class="form-control" [placeholder]="product.price" [(ngModel)] = "product.price">
+                </div>
+                <div class="row py-2">
+                    <label>weight</label>
+                    <input type="text" class="form-control" [placeholder]="product.weight" [(ngModel)] = "product.weight">
+                </div>
+                <div class="row py-2">
+                    <label>reference</label>
+                    <input type="text" class="form-control" [placeholder]="product.reference" [(ngModel)] = "product.reference">
+                </div>
+                <div class="row py-2">
+                    <label>color</label>
+                    <input type="text" class="form-control" [placeholder]="product.color" [(ngModel)] = "product.color">
+                </div>
+            
+                <div class="card row">
+                    <div class="card-header">Add orderLines</div>
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-md-12 py-2"><label>price</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "orderLine.price" >
+                                </div>
+                                <div class="col-md-12 py-2"><label>id</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "orderLine.id" >
+                                </div>
+                                    <div class="col-md-6 py-2"><label>command reference</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "orderLine.commandVo.reference">
+                                    </div>
+                                    <div class="col-md-6 py-2"><label>product reference</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "orderLine.productVo.reference">
+                                    </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline-danger btn-block" (click)="addOrderLine()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card row m-md-2 p-md-1 table-responsive">
+                    <div class="card-header">Added orderLines</div>
+                    <div class="card-body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                    <th>price</th>
+                                <th>id</th>
+                                    <th>command reference</th>
+                                    <th>product reference</th>
+                                <th>Delete</th>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let p of product.orderLinesVo;let i = index">
+                                    <td>{{p.price}}</td>
+                                    <td>{{p.id}}</td>
+                                        <td>{{p.commandVo.reference}}</td>
+                                        <td>{{p.productVo.reference}}</td>
+                                    <td><button class="btn btn-dark fa fa-trash" (click)="removeOrderLine(i)"></button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        <div class="card-footer" >
+            <button class="form-control" (click)="editProduct()" >Edit</button>
+        </div>
+    </div>
+</div>

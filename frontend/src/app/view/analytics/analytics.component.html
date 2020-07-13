@@ -1,0 +1,293 @@
+<!-- <div class="p-grid ui-fluid">
+    <div class="col-md-6 pl-0">
+        <label for="rangeDates">Date range: </label>
+        <p-calendar id="rangeDates" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true">
+        </p-calendar>
+    </div>
+</div>
+<p>{{rangeDates}}</p> -->
+<ul class="nav nav-pills mb-3 row" id="pills-tab" role="tablist">
+    <li class="nav-item col-md-4" role="presentation">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+            aria-controls="pills-home" aria-selected="true"><i class="fas fa-code-branch"></i> Business</a>
+    </li>
+    <li class="nav-item col-md-4" role="presentation">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+            aria-controls="pills-profile" aria-selected="false"> <i class="fas fa-industry"></i> Products</a>
+    </li>
+    <li class="nav-item col-md-4" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+            aria-controls="pills-contact" aria-selected="false"><i class="fas fa-shipping-fast"></i> Delivery</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="p-grid ui-fluid mb-4">
+            <label for="rangeDates">Date range: </label>
+            <div class="col-md-12 pl-0 d-flex justify-content-start">
+                <p-calendar class="p-0 col-md-6 mr-2" id="rangeDates" [(ngModel)]="rangeDates" selectionMode="range"
+                    [readonlyInput]="true">
+                </p-calendar>
+                <button [disabled]="!rangeDates" pButton type="button" (click)="fetchAnalyticsStats()"
+                    icon="pi pi-search" class="ui-button-icon-primary"></button>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-3">
+                <div class="card border-primary mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-primary">Total orders</div>
+                    <div class="card-body text-primary d-flex align-items-baseline">
+                        <svg class="bi bi-cart" width="3.5em" height="3.5em" viewBox="0 0 16 16" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                        </svg>
+                        <p class="h3 font-weight-normal">{{analyticsStats.totalCommands | bigNumber}} MAD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-info">Confirmed orders</div>
+                    <div class="card-body text-info d-flex align-items-baseline">
+                        <svg class="bi bi-cart-check" width="3.5em" height="3.5em" viewBox="0 0 16 16"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                            <path fill-rule="evenodd"
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                        </svg>
+                        <p class="h3 font-weight-normal">{{analyticsStats.totalCommandsConfirmed | bigNumber}} MAD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-success">Delivered orders</div>
+                    <div class="card-body text-success d-flex align-items-baseline">
+                        <svg class="bi bi-cart-dash" width="3.5em" height="3.5em" viewBox="0 0 16 16"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M6 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+                            <path fill-rule="evenodd"
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                        </svg>
+                        <p class="h3 font-weight-normal">{{analyticsStats.totalCommandsDelivred | bigNumber}} MAD</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-warning mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-warning">Paid orders</div>
+                    <div class="card-body text-warning d-flex align-items-baseline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="3.5em" height="3.5em" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-dollar-sign">
+                            <line x1="12" y1="1" x2="12" y2="23" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        <p class="h3 font-weight-normal">{{analyticsStats.totalCommandsPaid | bigNumber}} MAD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex align-items-center mb-2">
+            <span class="badge badge-pill badge-success px-2 py-1" style="font-size: 1em;">The last week's
+                statistics</span>
+            <hr class="flex-grow-1" />
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-5">
+                <div class="card mb-5 text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">Total orders<span
+                                class="badge badge-pill badge-light ml-2">{{totalOrders | bigNumber}}</span></h5>
+                    </div>
+                </div>
+                <p-chart type="line" [data]="totalOrdersData"></p-chart>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card mb-5 text-white bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">Confirmed orders<span
+                                class="badge badge-pill badge-light ml-2">{{totalConfirmedOrders | bigNumber}}</span>
+                        </h5>
+                    </div>
+                </div>
+                <p-chart type="line" [data]="confirmedOrdersData"></p-chart>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card mb-5 text-white bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">Delivered orders<span
+                                class="badge badge-pill badge-light ml-2">{{totalDeliveredOrders | bigNumber}}</span>
+                        </h5>
+                    </div>
+                </div>
+                <p-chart type="line" [data]="deliveredOrdersData"></p-chart>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div  class="p-grid ui-fluid mb-4">
+            <label for="rangeDates text-body">Date range: </label>
+            <div class="col-md-12 pl-0 d-flex justify-content-start">
+                <p-calendar class="p-0 col-md-6 mr-2" id="rangeDates" [(ngModel)]="rangeDates" selectionMode="range"
+                    [readonlyInput]="true">
+                </p-calendar>
+                <button [disabled]="!rangeDates" pButton type="button" icon="pi pi-search"
+                    class="ui-button-icon-primary"></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-5 text-white bg-success">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2> <i class="fas fa-industry"></i> Products Analytics</h2>
+                            <p>From {{rangeDates}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <p-table [columns]="cols" [value]="products" [rows]="rows" [totalRecords]="totalRecords"
+                    (sortFunction)="customSort($event)" [customSort]="true" [lazy]="true"
+                    (onLazyLoad)="loadCarsLazy($event)" [paginator]="true" [loading]="loading">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                {{col.header}}
+                                <p-sortIcon [field]="col.field"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <td *ngFor="let col of columns">
+                                {{rowData[col.field]}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div  class="p-grid ui-fluid mb-4">
+            <label for="rangeDates text-body">Date range: </label>
+            <div class="col-md-12 pl-0 d-flex justify-content-start">
+                <p-calendar class="p-0 col-md-6 mr-2" id="rangeDates" [(ngModel)]="rangeDates" selectionMode="range"
+                    [readonlyInput]="true">
+                </p-calendar>
+                <button [disabled]="!rangeDates" pButton type="button" icon="pi pi-search"
+                    class="ui-button-icon-primary"></button>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12 mb-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2><i class="fas fa-shipping-fast"></i> Delivery Analytics</h2>
+                            <p>From {{rangeDates}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <p-table [value]="deliveries" [rows]="deliveryRows" [totalRecords]="deliveryTotalRecords" [lazy]="true"
+                    (onLazyLoad)="loadDeliveriesLazy($event)" [paginator]="true" [loading]="loading">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Total Orders</th>
+                            <th>Delivered</th>
+                            <th>Delivered this period</th>
+                            <th>Returned</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <td *ngFor="let col of columns">
+                                <ng-content *ngIf="col===''"></ng-content>
+                                {{rowData[col.field]}}
+                            </td>
+                            <td>{{rowData.id}}</td>
+                            <td>{{rowData.name}}</td>
+                            <td>
+                                <span class="badge badge-pill badge-secondary px-2 py-1"
+                                    style="font-size: 1em;">{{rowData.totalOrders | bigNumber}}</span>
+                            </td>
+                            <td>
+                                <!-- {{rowData.delivered}} -->
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- {{rowData.return}} -->
+                                <div class="progress" style="height: 5px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
+                                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-warning text-white px-2 py-1"
+                                    style="font-size: 1em;">{{rowData.deliveredPeriod | bigNumber}}</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <div class="card mb-3 text-white bg-primary">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>Status in Realtime</h2>
+                            <p>From {{rangeDates}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <p-table [value]="deliveryStats" [rows]="deliveryStatsRows" [totalRecords]="deliveryStatsTotalRecords"
+                    [lazy]="true" (onLazyLoad)="loadDeliveryStatsLazy($event)" [paginator]="true" [loading]="loading">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Paid</th>
+                            <th>Processed</th>
+                            <th>Closed</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <td>{{rowData.id}}</td>
+                            <td>{{rowData.name}}</td>
+                            <td>
+                                <span class="badge badge-pill badge-success px-2 py-1"
+                                    style="font-size: 1em;">{{rowData.paid | bigNumber}}</span>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-secondary px-2 py-1"
+                                    style="font-size: 1em;">{{rowData.processed | bigNumber}}</span>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badge-danger px-2 py-1"
+                                    style="font-size: 1em;">{{rowData.closed | bigNumber}}</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

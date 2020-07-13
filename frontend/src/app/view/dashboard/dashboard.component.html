@@ -1,0 +1,321 @@
+<div *ngIf='!(user.authority.authority==="Delivery")' class="d-flex align-items-center px-2 my-3">
+    <span class="badge badge-pill badge-dark"> <i class="fas fa-list-ul    "></i> Total</span>
+    <hr class="flex-grow-1" />
+</div>
+
+<div *ngIf='!(user.authority.authority==="Delivery")' class="row px-4 pb-2">
+
+    <div [ngClass]="{'col-md-3': !(user.authority.authority==='Validator'), 'col-md-4' : (user.authority.authority==='Validator')}"
+        class="pr-4 d-flex justify-content-start border-blue">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-cart3.svg" alt="Cart">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body text-body">{{dashboardStats.totalSalesCurrentDay | bigNumber}} MAD
+            </p>
+            <hr class="my-1 blue-color" />
+            <p class="mb-0 blue-color font-size-12 font-weight-bold">Today's sales</p>
+        </div>
+    </div>
+
+    <div [ngClass]="{'col-md-3': !(user.authority.authority==='Validator'), 'col-md-4' : (user.authority.authority==='Validator')}"
+        class="pr-4 d-flex justify-content-start border-orange">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-feather-dollar-sign.svg" alt="Dollar sign">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.totalCommandsSales | bigNumber}} MAD</p>
+            <hr class="my-1 blue-color" />
+            <p class="mb-0 orange-color font-size-12 font-weight-bold">Total sales</p>
+        </div>
+    </div>
+
+    <div [ngClass]="{'col-md-3': !(user.authority.authority==='Validator'), 'col-md-4' : (user.authority.authority==='Validator')}"
+        *ngIf='(user.authority.authority==="Admin")' class="pr-4 d-flex justify-content-start border-green">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-person-check.svg" alt="Person check">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.totalValidator | bigNumber}}</p>
+            <hr class="my-1" />
+            <p class="mb-0 green-color font-size-12 font-weight-bold">Total Validators</p>
+        </div>
+    </div>
+
+    <div [ngClass]="{'col-md-3': !(user.authority.authority==='Validator'), 'col-md-4' : (user.authority.authority==='Validator')}"
+        class="pr-4 d-flex justify-content-start border-red">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-box.svg" alt="Box">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.totalDelivery | bigNumber}}</p>
+            <hr class="my-1" />
+            <p class="mb-0 red-color font-size-12 font-weight-bold">Total Deliveries</p>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf='(user.authority.authority==="Admin") || (user.authority.authority==="Validator")'
+    class="d-flex align-items-center px-2 my-3">
+    <span class="badge badge-pill badge-dark"> <i class="fas fa-check-double"></i> Validators</span>
+    <hr class="flex-grow-1" />
+</div>
+
+<div *ngIf='(user.authority.authority==="Admin") || (user.authority.authority==="Validator")' class="row px-4 pb-2">
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-blue">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-cart3.svg" alt="Cart">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.totalConfirmedCurrentDay | bigNumber}} MAD</p>
+            <hr class="my-1" />
+            <p class="mb-0 blue-color font-size-12 font-weight-bold">Today's sales</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-orange">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-feather-dollar-sign.svg" alt="Dollar sign">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.totalConfirmedCommands | bigNumber}} MAD</p>
+            <hr class="my-1" />
+            <p class="mb-0 orange-color font-size-12 font-weight-bold">Total sales</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-green">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-check.svg" alt="Check">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.confirmedCommands | bigNumber}}</p>
+            <hr class="my-1" />
+            <p class="mb-0 green-color font-size-12 font-weight-bold">Confirmed Orders</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-red">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-cart-dash.svg" alt="Cart dash">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.processedCommand | bigNumber}}</p>
+            <hr class="my-1" />
+            <p class="mb-0 red-color font-size-12 font-weight-bold">Non Confirmed Orders</p>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex align-items-center px-2 my-3">
+    <span class="badge badge-pill badge-dark"> <i class="fas fa-shipping-fast"></i> Delivery</span>
+    <hr class="flex-grow-1" />
+</div>
+
+<div class="row px-4 pb-2">
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-blue">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-cart3.svg" alt="Cart">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.totalClosedCurrentDay | bigNumber}} MAD</p>
+            <hr class="my-1" />
+            <p class="mb-0 blue-color font-size-12 font-weight-bold">Today's sales</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-orange">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-feather-dollar-sign.svg" alt="Dollar sign">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.totalClosedCommands | bigNumber}} MAD</p>
+            <hr class="my-1" />
+            <p class="mb-0 orange-color font-size-12 font-weight-bold">Total sales</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-green">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-check.svg" alt="Check">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.closedCommands | bigNumber}}</p>
+            <hr class="my-1" />
+            <p class="mb-0 green-color font-size-12 font-weight-bold">Delivered Orders</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 pr-4 d-flex justify-content-start border-red">
+        <div class="d-flex align-self-center mr-2">
+            <img src="/assets/icons/bi-cart-dash.svg" alt="Cart dash">
+        </div>
+        <div class="align-self-end">
+            <p class="h3 font-weight-normal text-body">{{dashboardStats.returnedCommands | bigNumber}}</p>
+            <hr class="my-1" />
+            <p class="mb-0 red-color font-size-12 font-weight-bold">Non Delivered Orders</p>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-12 form-inline">
+        <p class="text-capitalize h2 mr-2 text-body">Sales</p>
+        <span class="badge badge-pill badge-primary">{{currentYear()}}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <p-chart type="bar" [data]="data"></p-chart>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf='(user.authority.authority==="Admin")' class="p-grid ui-fluid mb-4" id="date-range-section">
+    <label for="rangeDates text-body">Date range: </label>
+    <div class="col-md-12 pl-0 d-flex justify-content-start">
+        <p-calendar class="p-0 col-md-6 mr-2" id="rangeDates" [(ngModel)]="rangeDates" selectionMode="range"
+            [readonlyInput]="true">
+        </p-calendar>
+        <button [disabled]="!rangeDates" pButton type="button" (click)="fetchTopStats()" icon="pi pi-search"
+            class="ui-button-icon-primary"></button>
+    </div>
+</div>
+
+<div *ngIf='(user.authority.authority==="Admin")' class="row">
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header">
+                Top Products
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Units</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="topProducts?.length==0 || topProducts==undefined">
+                            <td colspan="5" class="text-center font-italic">No products found</td>
+                        </tr>
+                        <tr *ngFor="let p of topProducts;  index as i"
+                            [ngClass]="{'bg-success': i==0, 'bg-info': i==1, 'bg-warning': i==2}">
+                            <td class="font-weight-bold">{{i+1}}</td>
+                            <td>{{p.label}}</td>
+                            <td>{{p.units | bigNumber}}</td>
+                            <td>{{p.price | bigNumber}}</td>
+                            <td>{{p.sales | bigNumber}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header">
+                Top Customers
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Orders</th>
+                            <th scope="col">Sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="topCustomers?.length==0 || topCustomers==undefined">
+                            <td colspan="4" class="text-center font-italic">No customers found</td>
+                        </tr>
+                        <tr *ngFor="let c of topCustomers;  index as i"
+                            [ngClass]="{'bg-success': i==0, 'bg-info': i==1, 'bg-warning': i==2}">
+                            <td class="font-weight-bold">{{i+1}}</td>
+                            <td>{{i+1}}</td>
+                            <td>{{c.lastName}}</td>
+                            <td>{{c.totalCommands | bigNumber}}</td>
+                            <td>{{c.sales | bigNumber}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header">
+                Top Delivery Companies
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="topDeliveredCompanies?.length==0 || topDeliveredCompanies==undefined">
+                            <td colspan="3" class="text-center font-italic">No companies found</td>
+                        </tr>
+                        <tr *ngFor="let dC of topDeliveredCompanies;  index as i"
+                            [ngClass]="{'bg-success': i==0, 'bg-info': i==1, 'bg-warning': i==2}">
+                            <td class="font-weight-bold">{{i+1}}</td>
+                            <td>{{dC.lastName}}</td>
+                            <td>{{dC.totalCommands | bigNumber}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header">
+                Top Cities
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Orders</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="topCities?.length==0 || topCities==undefined">
+                            <td colspan="3" class="text-center font-italic">No cities found</td>
+                        </tr>
+                        <tr *ngFor="let c of topCities;  index as i"
+                            [ngClass]="{'bg-success': i==0, 'bg-info': i==1, 'bg-warning': i==2}">
+                            <td class="font-weight-bold">{{i+1}}</td>
+                            <td>{{c.name}}</td>
+                            <td>{{c.totalCommands | bigNumber}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

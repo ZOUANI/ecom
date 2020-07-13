@@ -1,0 +1,164 @@
+     <app-user></app-user>
+
+<div class="container">
+  <div class="row">
+    <div id="accordion" class="col-12 my-3">
+      <div class="card">
+        <div class="card-header border-0 bg-white" id="headingSearch">
+          
+            <button class="btn btn-info  btn-sm fa fa-filter" data-toggle="collapse" data-target="#search" aria-expanded="true" aria-controls="search">
+              <h5 class="float-right">Search Forms</h5>
+            </button>
+         
+        </div>
+
+        <div id="search" class="collapse" aria-labelledby="headingSearch" data-parent="#accordion">
+          <div class="card-body">
+            <div class="container">
+              <div class = "row">
+               <div class="form-row">
+   
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">id</small>
+<input type="text" class="form-control col-12" placeholder="id" [(ngModel)]="userSearch.id">
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">code</small>
+<input type="text" class="form-control col-12" placeholder="code" [(ngModel)]="userSearch.code">
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">firsttName</small>
+<input type="text" class="form-control col-12" placeholder="firsttName" [(ngModel)]="userSearch.firsttName">
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">lastName</small>
+<input type="text" class="form-control col-12" placeholder="lastName" [(ngModel)]="userSearch.lastName">
+             </div>
+              <div class="input-group  col-4  my-2">
+    <div class="col-5 mx-1 px-1">
+                    <div class="p-grid ui-fluid">
+                        <small class="text-muted">created Min</small>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "userSearch.createdMin"></p-calendar>
+                    </div>
+    </div>
+    <div class="col-5 mx-1 px-1">
+                    <div class="p-grid ui-fluid">
+                        <small class="text-muted">created Max</small>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "userSearch.createdMax"></p-calendar>
+                    </div>
+    </div>
+
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">email</small>
+<input type="text" class="form-control col-12" placeholder="email" [(ngModel)]="userSearch.email">
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">phoneNumber</small>
+<input type="text" class="form-control col-12" placeholder="phoneNumber" [(ngModel)]="userSearch.phoneNumber">
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">password</small>
+<input type="text" class="form-control col-12" placeholder="password" [(ngModel)]="userSearch.password">
+             </div>
+              <div class="input-group  col-3  my-2">
+
+                <div class="col-5  mx-1 px-1">
+                    <small class="text-muted col-12">enabled</small>
+                    <select class="form-control col-12" [(ngModel)] = "userSearch.enabled">
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+                 </div>   
+             </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">authority</small>
+                    <select class="form-control col-12" [(ngModel)]="userSearch.authorityVo" >
+                        <option *ngFor="let p of authoritys" [ngValue]="p" >{{p.authority}}</option>
+                    </select>
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">city</small>
+                    <select class="form-control col-12" [(ngModel)]="userSearch.cityVo" >
+                        <option *ngFor="let p of citys" [ngValue]="p" >{{p.name}}</option>
+                    </select>
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">superAdmin</small>
+                    <select class="form-control col-12" [(ngModel)]="userSearch.superAdminVo" >
+                        <option *ngFor="let p of superAdmins" [ngValue]="p" >{{p.code}}</option>
+                    </select>
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">deliveryType</small>
+                    <select class="form-control col-12" [(ngModel)]="userSearch.deliveryTypeVo" >
+                        <option *ngFor="let p of deliveryTypes" [ngValue]="p" >{{p.label}}</option>
+                    </select>
+                 </div>
+              </div>    
+          </div>
+           <button class="btn btn-info btn-sm fa fa-search float-right px-5 py-2 my-4" (click)="findUser(userSearch)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+<div class="row">
+  <div class="card col-12">
+    <div class="card-header bg-transparent">
+    <div class="float-left px-1"> <h5>List of users. </h5></div>
+
+    </div>
+    <div class="card-body table-responsive">
+
+      <table class="table table-hover col-md-12">
+        <thead class="thead-dark">
+
+          <th>id</th>
+          <th>code</th>
+          <th>firsttName</th>
+          <th>lastName</th>
+          <th>created</th>
+          <th>email</th>
+          <th>phoneNumber</th>
+          <th>password</th>
+          <th>enabled</th>
+            <th>authority reference</th>
+            <th>city reference</th>
+            <th>superAdmin reference</th>
+            <th>deliveryType reference</th>
+     <th>Actions</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of userListe">
+
+           <td>{{p.id}}</td>
+           <td>{{p.code}}</td>
+           <td>{{p.firsttName}}</td>
+           <td>{{p.lastName}}</td>
+           <td>{{p.created}}</td>
+           <td>{{p.email}}</td>
+           <td>{{p.phoneNumber}}</td>
+           <td>{{p.password}}</td>
+           <td>{{p.enabled}}</td>
+            <td>{{p.authorityVo?.authority}}</td>
+            <td>{{p.cityVo?.name}}</td>
+            <td>{{p.superAdminVo?.code}}</td>
+            <td>{{p.deliveryTypeVo?.label}}</td>
+ 
+
+<td><button class="btn btn-danger btn-sm fa fa-trash mx-md-1" (click)="delete(p)"></button>
+  <button class="btn btn-warning btn-sm fa fa-external-link mx-md-1" (click)="detailShow(p)"></button>
+  
+
+</td>
+
+</tr>
+<app-user-details *ngIf="userShowDetail"></app-user-details>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>

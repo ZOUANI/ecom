@@ -1,0 +1,117 @@
+    <app-command></app-command>
+<div class="card col-md-8 mx-auto  p-md-2">
+     <div class="card-header text-center font-weight-bold">Create Commands</div> 
+    <div class="card-body">
+        
+                <div class="row py-2">
+                    <label>total</label>
+                    <input type="text" class="form-control" [(ngModel)] = "command.total">
+                </div>
+                <div class="row py-2">
+                    <div class="p-grid ui-fluid">
+                        <label>regulationDate</label>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "command.regulationDate"></p-calendar>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <label>adress</label>
+                    <input type="text" class="form-control" [(ngModel)] = "command.adress">
+                </div>
+                <div class="row py-2">
+                    <label>reference</label>
+                    <input type="text" class="form-control" [(ngModel)] = "command.reference">
+                </div>
+                <div class="row py-2">
+                    <label>remarque</label>
+                    <input type="text" class="form-control" [(ngModel)] = "command.remarque">
+                </div>
+                <div class="row py-2">
+                    <div class="p-grid ui-fluid">
+                        <label>orderDate</label>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "command.orderDate"></p-calendar>
+                    </div>
+                </div>
+        
+                <div class="row" >
+                    <label>delivery</label>
+                    <select class="form-control" [(ngModel)]="command.deliveryVo.code" >
+                        <option *ngFor="let p of deliverys" [ngValue]="p.code" value="{{p.code}}">{{p.code}}</option>
+                    </select>
+                </div>
+                <div class="row" >
+                    <label>validator</label>
+                    <select class="form-control" [(ngModel)]="command.validatorVo.code" >
+                        <option *ngFor="let p of validators" [ngValue]="p.code" value="{{p.code}}">{{p.code}}</option>
+                    </select>
+                </div>
+                <div class="row" >
+                    <label>admin</label>
+                    <select class="form-control" [(ngModel)]="command.adminVo.code" >
+                        <option *ngFor="let p of admins" [ngValue]="p.code" value="{{p.code}}">{{p.code}}</option>
+                    </select>
+                </div>
+                <div class="row" >
+                    <label>client</label>
+                        <select class="form-control" [(ngModel)]="command.clientVo.id" >
+                        <option *ngFor="let p of clients" [ngValue]="p.id" value="{{p.id}}">{{p.id}}</option>
+                        </select>
+                </div>
+                <div class="row" >
+                    <label>orderStatus</label>
+                    <select class="form-control" [(ngModel)]="command.orderStatusVo.label" >
+                        <option *ngFor="let p of orderStatuss" [ngValue]="p.label" value="{{p.label}}">{{p.label}}</option>
+                    </select>
+                </div>
+                <div class="row" >
+                    <label>city</label>
+                    <select class="form-control" [(ngModel)]="command.cityVo.name" >
+                        <option *ngFor="let p of citys" [ngValue]="p.name" value="{{p.name}}">{{p.name}}</option>
+                    </select>
+                </div>
+                <div class="card row">
+                    <div class="card-header">Add orderLines</div>
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-md-12 py-2"><label>price</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "orderLine.price" >
+                                </div>
+                                <div class="col-md-12 py-2"><label>id</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "orderLine.id" >
+                                </div>
+                                    <div class="col-md-6 py-2"><label>product reference</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "orderLine.productVo.reference">
+                                    </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline-danger btn-block" (click)="addOrderLine()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card row table-responsive">
+                    <div class="card-header">Added orderLines</div>
+                    <div class="card-body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <th>price</th>
+                                <th>id</th>
+                                    <th>command reference</th>
+                                    <th>product reference</th>
+                                <th>Delete</th>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let p of command.orderLinesVo;let i = index">
+                                    <td>{{p.price}}</td>
+                                    <td>{{p.id}}</td>
+                                        <td>{{p.commandVo.reference}}</td>
+                                        <td>{{p.productVo.reference}}</td>
+                                    <td><button class="btn btn-dark fa fa-trash" (click)="removeOrderLine(i)"></button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        <div class="modal-footer" >
+            <button class="form-control" (click)="saveCommand()" >Save</button>
+        </div>
+    </div>
+</div>

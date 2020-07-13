@@ -1,0 +1,100 @@
+
+<div class="container">
+  <div class="row">
+    <div id="accordion" class="col-12 my-3">
+      <div class="card">
+        <div class="card-header border-0 bg-white" id="headingSearch">
+          
+            <button class="btn btn-info  btn-sm fa fa-filter" data-toggle="collapse" data-target="#search" aria-expanded="true" aria-controls="search">
+              <h5 class="float-right">Search Forms</h5>
+            </button>
+         
+        </div>
+
+        <div id="search" class="collapse" aria-labelledby="headingSearch" data-parent="#accordion">
+          <div class="card-body">
+            <div class="container">
+              <div class = "row">
+               <div class="form-row">
+   
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">id</small>
+<input type="text" class="form-control col-12" placeholder="id" [(ngModel)]="orderLineSearch.id">
+             </div>
+              <div class="input-group  col-4  my-2">
+    <div class="col-5  mx-1 px-1">
+      <small class="text-muted">price Min</small>
+      <input type="text" class="form-control" placeholder="Min price" [(ngModel)]="orderLineSearch.priceMin">
+    </div>
+    <div class="col-5  mx-1 px-1 ">
+      <small class="text-muted">price Min</small>
+      <input type="text" class="form-control" placeholder="Max price" [(ngModel)]="orderLineSearch.priceMax">
+    </div>
+             </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">product</small>
+                    <select class="form-control col-12" [(ngModel)]="orderLineSearch.productVo" >
+                        <option *ngFor="let p of products" [ngValue]="p" >{{p.reference}}</option>
+                    </select>
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">command</small>
+                    <select class="form-control col-12" [(ngModel)]="orderLineSearch.commandVo" >
+                        <option *ngFor="let p of commands" [ngValue]="p" >{{p.reference}}</option>
+                    </select>
+                 </div>
+              </div>    
+          </div>
+           <button class="btn btn-info btn-sm fa fa-search float-right px-5 py-2 my-4" (click)="findOrderLine(orderLineSearch)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+<div class="row">
+  <div class="card col-12">
+    <div class="card-header bg-transparent">
+    <div class="float-left px-1"> <h5>List of orderLines. </h5></div>
+
+          <button class="btn btn-success btn-sm fa fa-plus float-right" (click)="createShow()"> Create a new orderLine</button>
+          
+    </div>
+    <div class="card-body table-responsive">
+
+      <table class="table table-hover col-md-12">
+        <thead class="thead-dark">
+
+          <th>id</th>
+          <th>price</th>
+            <th>product reference</th>
+            <th>command reference</th>
+     <th>Actions</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of orderLineListe">
+
+           <td>{{p.id}}</td>
+           <td>{{p.price}}</td>
+            <td>{{p.productVo?.reference}}</td>
+            <td>{{p.commandVo?.reference}}</td>
+ 
+
+<td><button class="btn btn-danger btn-sm fa fa-trash mx-md-1" (click)="delete(p)"></button>
+  <button class="btn btn-warning btn-sm fa fa-external-link mx-md-1" (click)="detailShow(p)"></button>
+    <button class="btn btn-info btn-sm fa fa-pencil mx-md-1" (click)="editShow(p)"></button>
+  
+  
+
+</td>
+
+</tr>
+  <app-orderLine-edit *ngIf="orderLineShowEdit"></app-orderLine-edit>
+  <app-orderLine-create *ngIf="orderLineShowCreate"></app-orderLine-create>
+<app-orderLine-details *ngIf="orderLineShowDetail"></app-orderLine-details>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>

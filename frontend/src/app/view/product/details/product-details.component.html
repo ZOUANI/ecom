@@ -1,0 +1,65 @@
+<div class="modal" tabindex="-1" role="dialog" style="display: block;background-color: #000000bf;">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">details of Product </h5>
+        <button type="button" class="close" aria-label="Close" (click)="detailHide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <th>Field</th>
+            <th>Value</th>
+          </thead>
+          <tbody>
+           <tr >
+             <td>id</td>
+             <td>{{productDetail.id}} </td>
+           </tr>
+           <tr >
+             <td>reference</td>
+             <td>{{productDetail.reference}} </td>
+           </tr>
+           <tr >
+             <td>label</td>
+             <td>{{productDetail.label}} </td>
+           </tr>
+           <tr >
+             <td>price</td>
+             <td>{{productDetail.price}} </td>
+           </tr>
+           <tr >
+             <td>qteStock</td>
+             <td>{{productDetail.qteStock}} </td>
+           </tr>
+           <tr >
+             <td>size</td>
+             <td>{{productDetail.size}} </td>
+           </tr>
+           <tr >
+             <td>color</td>
+             <td>{{productDetail.color}} </td>
+           </tr>
+           <tr >
+             <td>weight</td>
+             <td>{{productDetail.weight}} </td>
+           </tr>
+           <tr >
+             <td>orderLines</td>
+             <td> <ul>
+               <li *ngFor="let p of productDetail.orderLinesVo">
+          
+                {{p.id}}  
+               </li>
+             </ul>
+             </td>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

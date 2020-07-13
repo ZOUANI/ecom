@@ -1,0 +1,75 @@
+<div class="modal" tabindex="-1" role="dialog" style="display: block;background-color: #000000bf;">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">details of User </h5>
+        <button type="button" class="close" aria-label="Close" (click)="detailHide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <th>Field</th>
+            <th>Value</th>
+          </thead>
+          <tbody>
+           <tr >
+             <td>id</td>
+             <td>{{userDetail.id}} </td>
+           </tr>
+           <tr >
+             <td>code</td>
+             <td>{{userDetail.code}} </td>
+           </tr>
+           <tr >
+             <td>firsttName</td>
+             <td>{{userDetail.firsttName}} </td>
+           </tr>
+           <tr >
+             <td>lastName</td>
+             <td>{{userDetail.lastName}} </td>
+           </tr>
+           <tr >
+             <td>created</td>
+             <td>{{userDetail.created}} </td>
+           </tr>
+           <tr >
+             <td>email</td>
+             <td>{{userDetail.email}} </td>
+           </tr>
+           <tr >
+             <td>phoneNumber</td>
+             <td>{{userDetail.phoneNumber}} </td>
+           </tr>
+           <tr >
+             <td>password</td>
+             <td>{{userDetail.password}} </td>
+           </tr>
+           <tr >
+             <td>enabled</td>
+             <td>{{userDetail.enabled}} </td>
+           </tr>
+           <tr >
+             <td>authority</td>
+           <td>{{userDetail.authorityVo.authority}} </td>
+           </tr>
+           <tr >
+             <td>city</td>
+           <td>{{userDetail.cityVo.name}} </td>
+           </tr>
+           <tr >
+             <td>superAdmin</td>
+           <td>{{userDetail.superAdminVo.code}} </td>
+           </tr>
+           <tr >
+             <td>deliveryType</td>
+           <td>{{userDetail.deliveryTypeVo.label}} </td>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

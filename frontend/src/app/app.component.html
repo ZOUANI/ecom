@@ -1,0 +1,139 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Project</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+                         <li class="nav-item ">
+                    <a class="nav-link" routerLink="/category/list" id="navbarOfCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+             </li>
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarOfUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        User
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarOfUser">
+                        <a class="dropdown-item" routerLink="/user/list">List</a>
+                        <a class="dropdown-item" routerLink="/user/create">Create</a>
+                        <a class="dropdown-item" routerLink="/user/edit">Edit</a>
+                    </div>
+                </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/categoryProduct/list" id="navbarOfCategoryProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        CategoryProduct
+                    </a>
+             </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/deliveryCost/list" id="navbarOfDeliveryCost" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        DeliveryCost
+                    </a>
+             </li>
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarOfProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Product
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarOfProduct">
+                        <a class="dropdown-item" routerLink="/product/list">List</a>
+                        <a class="dropdown-item" routerLink="/product/create">Create</a>
+                        <a class="dropdown-item" routerLink="/product/edit">Edit</a>
+                    </div>
+                </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/city/list" id="navbarOfCity" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        City
+                    </a>
+             </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/role/list" id="navbarOfRole" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Role
+                    </a>
+             </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/orderStatus/list" id="navbarOfOrderStatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        OrderStatus
+                    </a>
+             </li>
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarOfCommand" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Command
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarOfCommand">
+                        <a class="dropdown-item" routerLink="/command/list">List</a>
+                        <a class="dropdown-item" routerLink="/command/create">Create</a>
+                        <a class="dropdown-item" routerLink="/command/edit">Edit</a>
+                    </div>
+                </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/orderLine/list" id="navbarOfOrderLine" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        OrderLine
+                    </a>
+             </li>
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarOfClient" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Client
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarOfClient">
+                        <a class="dropdown-item" routerLink="/client/list">List</a>
+                        <a class="dropdown-item" routerLink="/client/create">Create</a>
+                        <a class="dropdown-item" routerLink="/client/edit">Edit</a>
+                    </div>
+                </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/stock/list" id="navbarOfStock" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Stock
+                    </a>
+             </li>
+             <li class="nav-item ">
+                    <a class="nav-link" routerLink="/deliveryType/list" id="navbarOfDeliveryType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        DeliveryType
+                    </a>
+             </li>
+        </ul>
+    </div>
+</nav> -->
+
+<div class="wrapper">
+    <app-navbar [opened]="openBar"  style="background-color: #26272b"
+                [sidebarItems]="sidebarItems"></app-navbar>
+    <div id="content">
+        <nav class="navbar navbar-dark  boxShadow">
+            <div class="sticky-top my-2 mx-2"> <button class="btn btn-dark btn-circle btn-lg" (click)="buttonClick()"><i class=" fa " [ngClass]="{'fa-bars': openBar==true , ' fa-close': openBar==false}" ></i></button></div>
+            <span style="text-align: center;" class="span">
+          <!-- <i class="fas fa-school"
+              style="font-size: 45px;text-align: center;"></i> -->
+
+          <img
+                  routerLink=""
+                  src="../assets/images/angular-icon.svg"
+                  alt="Login Image"
+                  height="40px"
+          />
+          <br />
+          ANGULAR 9.0</span>
+
+            <button  pButton class="btn btn-dark btn-circle btn-lg  float-left  mx-3" (click)="op1.toggle($event)"><i class="fa fa-bell"></i> <span class="badge badge-pill badge-danger" *ngIf="this.badgeNumber>0"> {{this.badgeNumber}}</span> </button>
+
+            <button  pButton class="btn btn-dark btn-circle btn-lg  float-left " (click)="menu.toggle($event)"><i class="fa fa-cog"></i> </button>
+        </nav>
+
+
+<div class="container-fluid p-3">
+    <router-outlet></router-outlet>
+</div>
+
+</div>
+    <p-overlayPanel #op1 [dismissable]="true" [showCloseIcon]="true" >
+        <ng-template pTemplate >
+            <div  *ngFor="let n of notifications">
+                <p> {{n}}</p>
+                <hr style="background-color:whitesmoke">
+            </div>
+            <div>
+                <button class="btn btn-dark col-6" (click)="markRead();op1.hide()"><i class="fa fa-check"></i> Mark as read</button>
+                <button class="btn btn-dark col-6" (click)="deleteNot();op1.hide()"> <i class="fa fa-trash"></i> Delete notifications</button>
+            </div>
+        </ng-template>
+    </p-overlayPanel>
+
+    <p-menu [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" #menu [popup]="true" [model]="settingItems"></p-menu>
+
+</div>

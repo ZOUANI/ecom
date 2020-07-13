@@ -1,0 +1,126 @@
+     <app-client></app-client>
+<div class="card col-md-8 mx-auto  p-md-2">
+    <div class="card-header text-center font-weight-bold">Edit Clients</div> 
+    <div class="card-body">
+            <div class="row my-1 ">
+                <label>Available Clients</label>
+                    <select class="form-control" [(ngModel)]="client.id" (click)="findByid(client.id)" >
+                        <option *ngFor="let p of editableClients" [ngValue]="p.id" value="{{p.id}}">{{p.id}}</option>
+                    </select>
+            </div>
+        
+                <div class="row py-2">
+                    <label>phoneNumber</label>
+                    <input type="text" class="form-control" [placeholder]="client.phoneNumber" [(ngModel)] = "client.phoneNumber">
+                </div>
+                <div class="row py-2">
+                    <label>lastName</label>
+                    <input type="text" class="form-control" [placeholder]="client.lastName" [(ngModel)] = "client.lastName">
+                </div>
+                <div class="row py-2">
+                    <label>email</label>
+                    <input type="text" class="form-control" [placeholder]="client.email" [(ngModel)] = "client.email">
+                </div>
+                <div class="row py-2">
+                    <label>firstName</label>
+                    <input type="text" class="form-control" [placeholder]="client.firstName" [(ngModel)] = "client.firstName">
+                </div>
+            
+                <div class="row m-md-2 p-md-1" >
+                    <label>city</label>
+                    <select class="form-control" [(ngModel)]="client.cityVo.name" >
+                        <option *ngFor="let p of citys" [ngValue]="p.name" value="{{p.name}}">{{p.name}}</option>
+                    </select>
+                </div>
+                <div class="card row">
+                    <div class="card-header">Add commands</div>
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-md-6 py-2"><label>total</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "command.total" >
+                                </div>
+                                    <div class="col-md-6 py-2">
+                                            <label>regulationDate</label>
+                                            <input class="col-md-12" [(ngModel)] = "command.regulationDate">
+                                    </div>
+                                <div class="col-md-6 py-2"><label>adress</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "command.adress" >
+                                </div>
+                                <div class="col-md-6 py-2"><label>reference</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "command.reference" >
+                                </div>
+                                <div class="col-md-6 py-2"><label>remarque</label>
+                                    <input type="text" class="form-control" [(ngModel)] = "command.remarque" >
+                                </div>
+                                    <div class="col-md-6 py-2">
+                                            <label>orderDate</label>
+                                            <input class="col-md-12" [(ngModel)] = "command.orderDate">
+                                    </div>
+                                    <div class="col-md-6 py-2"><label>delivery code</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "command.deliveryVo.code">
+                                    </div>
+                                    <div class="col-md-6 py-2"><label>validator code</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "command.validatorVo.code">
+                                    </div>
+                                    <div class="col-md-6 py-2"><label>admin code</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "command.adminVo.code">
+                                    </div>
+                                    <div class="col-md-6 py-2"><label>client id</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "command.clientVo.id">
+                                    </div>
+                                    <div class="col-md-6 py-2"><label>orderStatus label</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "command.orderStatusVo.label">
+                                    </div>
+                                    <div class="col-md-6 py-2"><label>city name</label>
+                                        <input type="text" class="form-control" [(ngModel)] = "command.cityVo.name">
+                                    </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline-danger btn-block" (click)="addCommand()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card row m-md-2 p-md-1 table-responsive">
+                    <div class="card-header">Added commands</div>
+                    <div class="card-body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                    <th>total</th>
+                                    <th>regulationDate</th>
+                                    <th>adress</th>
+                                    <th>reference</th>
+                                    <th>remarque</th>
+                                    <th>orderDate</th>
+                                    <th>delivery code</th>
+                                    <th>validator code</th>
+                                    <th>admin code</th>
+                                    <th>client id</th>
+                                    <th>orderStatus label</th>
+                                    <th>city name</th>
+                                <th>Delete</th>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let p of client.commandsVo;let i = index">
+                                    <td>{{p.total}}</td>
+                                    <td>{{p.regulationDate}}</td>
+                                    <td>{{p.adress}}</td>
+                                    <td>{{p.reference}}</td>
+                                    <td>{{p.remarque}}</td>
+                                    <td>{{p.orderDate}}</td>
+                                        <td>{{p.deliveryVo.code}}</td>
+                                        <td>{{p.validatorVo.code}}</td>
+                                        <td>{{p.adminVo.code}}</td>
+                                        <td>{{p.clientVo.id}}</td>
+                                        <td>{{p.orderStatusVo.label}}</td>
+                                        <td>{{p.cityVo.name}}</td>
+                                    <td><button class="btn btn-dark fa fa-trash" (click)="removeCommand(i)"></button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        <div class="card-footer" >
+            <button class="form-control" (click)="editClient()" >Edit</button>
+        </div>
+    </div>
+</div>

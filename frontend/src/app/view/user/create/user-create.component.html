@@ -1,0 +1,72 @@
+    <app-user></app-user>
+<div class="card col-md-8 mx-auto  p-md-2">
+     <div class="card-header text-center font-weight-bold">Create Users</div> 
+    <div class="card-body">
+        
+                <div class="row py-2">
+                    <label>password</label>
+                    <input type="text" class="form-control" [(ngModel)] = "user.password">
+                </div>
+                <div class="row py-2">
+                    <label>enabled</label>
+                    <select class="form-control" [(ngModel)] = "user.enabled">
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div>
+                <div class="row py-2">
+                    <label>phoneNumber</label>
+                    <input type="text" class="form-control" [(ngModel)] = "user.phoneNumber">
+                </div>
+                <div class="row py-2">
+                    <label>lastName</label>
+                    <input type="text" class="form-control" [(ngModel)] = "user.lastName">
+                </div>
+                <div class="row py-2">
+                    <label>email</label>
+                    <input type="text" class="form-control" [(ngModel)] = "user.email">
+                </div>
+                <div class="row py-2">
+                    <div class="p-grid ui-fluid">
+                        <label>created</label>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "user.created"></p-calendar>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <label>code</label>
+                    <input type="text" class="form-control" [(ngModel)] = "user.code">
+                </div>
+                <div class="row py-2">
+                    <label>firsttName</label>
+                    <input type="text" class="form-control" [(ngModel)] = "user.firsttName">
+                </div>
+        
+                <div class="row" >
+                    <label>superAdmin</label>
+                    <select class="form-control" [(ngModel)]="user.superAdminVo.code" >
+                        <option *ngFor="let p of superAdmins" [ngValue]="p.code" value="{{p.code}}">{{p.code}}</option>
+                    </select>
+                </div>
+                <div class="row" >
+                    <label>deliveryType</label>
+                    <select class="form-control" [(ngModel)]="user.deliveryTypeVo.label" >
+                        <option *ngFor="let p of deliveryTypes" [ngValue]="p.label" value="{{p.label}}">{{p.label}}</option>
+                    </select>
+                </div>
+                <div class="row" >
+                    <label>city</label>
+                    <select class="form-control" [(ngModel)]="user.cityVo.name" >
+                        <option *ngFor="let p of citys" [ngValue]="p.name" value="{{p.name}}">{{p.name}}</option>
+                    </select>
+                </div>
+                <div class="row" >
+                    <label>authority</label>
+                    <select class="form-control" [(ngModel)]="user.authorityVo.authority" >
+                        <option *ngFor="let p of authoritys" [ngValue]="p.authority" value="{{p.authority}}">{{p.authority}}</option>
+                    </select>
+                </div>
+        <div class="modal-footer" >
+            <button class="form-control" (click)="saveUser()" >Save</button>
+        </div>
+    </div>
+</div>

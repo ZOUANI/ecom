@@ -1,0 +1,47 @@
+.border-blue{
+    border-left: .3em solid rgb(73, 59, 200);
+    border-radius: .4em;
+}
+
+.blue-color{
+    color: rgb(73, 59, 200);
+}
+
+.border-orange{
+    border-left: .3em solid #ff5722;
+    border-radius: .4em;
+}
+
+.orange-color{
+    color: #ff5722;
+}
+
+.border-green{
+    border-left: .3em solid #20aa0e;
+    border-radius: .4em;
+}
+
+.green-color{
+    color: #20aa0e;
+}
+
+.border-red{
+    border-left: .3em solid #ff0000;
+    border-radius: .4em;
+}
+
+.red-color{
+    color: #ff0000;
+}
+
+.font-size-12{
+    font-size: 12px;
+}
+
+.card .card-header, #date-range-section label{
+    color: black;
+}
+.badge-dark{
+    font-size: 17px;
+    padding: 10px;
+}

@@ -1,0 +1,180 @@
+     <app-command></app-command>
+
+<div class="container">
+  <div class="row">
+    <div id="accordion" class="col-12 my-3">
+      <div class="card">
+        <div class="card-header border-0 bg-white" id="headingSearch">
+          
+            <button class="btn btn-info  btn-sm fa fa-filter" data-toggle="collapse" data-target="#search" aria-expanded="true" aria-controls="search">
+              <h5 class="float-right">Search Forms</h5>
+            </button>
+         
+        </div>
+
+        <div id="search" class="collapse" aria-labelledby="headingSearch" data-parent="#accordion">
+          <div class="card-body">
+            <div class="container">
+              <div class = "row">
+               <div class="form-row">
+   
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">id</small>
+<input type="text" class="form-control col-12" placeholder="id" [(ngModel)]="commandSearch.id">
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">reference</small>
+<input type="text" class="form-control col-12" placeholder="reference" [(ngModel)]="commandSearch.reference">
+             </div>
+              <div class="input-group  col-4  my-2">
+    <div class="col-5 mx-1 px-1">
+                    <div class="p-grid ui-fluid">
+                        <small class="text-muted">orderDate Min</small>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "commandSearch.orderDateMin"></p-calendar>
+                    </div>
+    </div>
+    <div class="col-5 mx-1 px-1">
+                    <div class="p-grid ui-fluid">
+                        <small class="text-muted">orderDate Max</small>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "commandSearch.orderDateMax"></p-calendar>
+                    </div>
+    </div>
+
+             </div>
+              <div class="input-group  col-4  my-2">
+    <div class="col-5 mx-1 px-1">
+                    <div class="p-grid ui-fluid">
+                        <small class="text-muted">regulationDate Min</small>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "commandSearch.regulationDateMin"></p-calendar>
+                    </div>
+    </div>
+    <div class="col-5 mx-1 px-1">
+                    <div class="p-grid ui-fluid">
+                        <small class="text-muted">regulationDate Max</small>
+                        <p-calendar class="p-col-12" dateFormat="yy-mm-dd" [(ngModel)] = "commandSearch.regulationDateMax"></p-calendar>
+                    </div>
+    </div>
+
+             </div>
+              <div class="input-group  col-4  my-2">
+    <div class="col-5  mx-1 px-1">
+      <small class="text-muted">total Min</small>
+      <input type="text" class="form-control" placeholder="Min total" [(ngModel)]="commandSearch.totalMin">
+    </div>
+    <div class="col-5  mx-1 px-1 ">
+      <small class="text-muted">total Min</small>
+      <input type="text" class="form-control" placeholder="Max total" [(ngModel)]="commandSearch.totalMax">
+    </div>
+             </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">orderStatus</small>
+                    <select class="form-control col-12" [(ngModel)]="commandSearch.orderStatusVo" >
+                        <option *ngFor="let p of orderStatuss" [ngValue]="p" >{{p.label}}</option>
+                    </select>
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">client</small>
+                        <select class="form-control col-12" [(ngModel)]="commandSearch.clientVo" >
+                        <option *ngFor="let p of clients" [ngValue]="p" >{{p.id}}</option>
+                        </select>
+                 
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">admin</small>
+                    <select class="form-control col-12" [(ngModel)]="commandSearch.adminVo" >
+                        <option *ngFor="let p of admins" [ngValue]="p" >{{p.code}}</option>
+                    </select>
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">delivery</small>
+                    <select class="form-control col-12" [(ngModel)]="commandSearch.deliveryVo" >
+                        <option *ngFor="let p of deliverys" [ngValue]="p" >{{p.code}}</option>
+                    </select>
+                 </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">validator</small>
+                    <select class="form-control col-12" [(ngModel)]="commandSearch.validatorVo" >
+                        <option *ngFor="let p of validators" [ngValue]="p" >{{p.code}}</option>
+                    </select>
+                 </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">remarque</small>
+<input type="text" class="form-control col-12" placeholder="remarque" [(ngModel)]="commandSearch.remarque">
+             </div>
+              <div class="input-group  col-3  my-2">
+<small class="text-muted col-12">adress</small>
+<input type="text" class="form-control col-12" placeholder="adress" [(ngModel)]="commandSearch.adress">
+             </div>
+                <div class="input-group  col-4 my-2">
+                   <small class="text-muted col-12">city</small>
+                    <select class="form-control col-12" [(ngModel)]="commandSearch.cityVo" >
+                        <option *ngFor="let p of citys" [ngValue]="p" >{{p.name}}</option>
+                    </select>
+                 </div>
+              </div>    
+          </div>
+           <button class="btn btn-info btn-sm fa fa-search float-right px-5 py-2 my-4" (click)="findCommand(commandSearch)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+<div class="row">
+  <div class="card col-12">
+    <div class="card-header bg-transparent">
+    <div class="float-left px-1"> <h5>List of commands. </h5></div>
+
+    </div>
+    <div class="card-body table-responsive">
+
+      <table class="table table-hover col-md-12">
+        <thead class="thead-dark">
+
+          <th>id</th>
+          <th>reference</th>
+          <th>orderDate</th>
+          <th>regulationDate</th>
+          <th>total</th>
+            <th>orderStatus reference</th>
+            <th>client id</th>
+            <th>admin reference</th>
+            <th>delivery reference</th>
+            <th>validator reference</th>
+          <th>remarque</th>
+          <th>adress</th>
+            <th>city reference</th>
+     <th>Actions</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of commandListe">
+
+           <td>{{p.id}}</td>
+           <td>{{p.reference}}</td>
+           <td>{{p.orderDate}}</td>
+           <td>{{p.regulationDate}}</td>
+           <td>{{p.total}}</td>
+            <td>{{p.orderStatusVo?.label}}</td>
+            <td>{{p.clientVo?.id}}</td>
+            <td>{{p.adminVo?.code}}</td>
+            <td>{{p.deliveryVo?.code}}</td>
+            <td>{{p.validatorVo?.code}}</td>
+           <td>{{p.remarque}}</td>
+           <td>{{p.adress}}</td>
+            <td>{{p.cityVo?.name}}</td>
+ 
+
+<td><button class="btn btn-danger btn-sm fa fa-trash mx-md-1" (click)="delete(p)"></button>
+  <button class="btn btn-warning btn-sm fa fa-external-link mx-md-1" (click)="detailShow(p)"></button>
+  
+
+</td>
+
+</tr>
+<app-command-details *ngIf="commandShowDetail"></app-command-details>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
