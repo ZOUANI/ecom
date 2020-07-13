@@ -29,12 +29,6 @@ public interface CategoryService {
      *         found in database return  null.
      */
 	Category findById(Long id);
-     
-     /**
-     * delete Category from database
-     * @param id - id of Category to be deleted
-     * 
-     */
 	void deleteById(Long id);
 
     /**
@@ -64,9 +58,6 @@ public interface CategoryService {
      * @return 1 if Category deleted successfully, If the Category can't be deleted return negative int
      */
 	int delete(Category category);
-
-
-    
         /**
      * delete Category from database by label (reference)
      * 
@@ -74,8 +65,7 @@ public interface CategoryService {
      * @return 1 if Category deleted successfully
      */
 	int deleteByLabel(String label);
-
-     
+    
 	/**
      * search for Category in by some criteria
      * @return the searhed list Category 

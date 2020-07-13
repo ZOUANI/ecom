@@ -1,11 +1,13 @@
 package ma.zs.generated.service.util;
- 
- 
- 
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+
 public class DateUtil {
 
     public static String formateDate(Date date) {
@@ -59,6 +61,32 @@ public class DateUtil {
             return new java.sql.Timestamp(date.getTime());
         } else {
             return null;
+        }
+    }
+
+    public static LocalDate fromDate(java.util.Date date) {
+        return asLocalDate(date, ZoneId.systemDefault());
+    }
+
+    public static LocalDate asLocalDate(java.util.Date date, ZoneId zone) {
+        if (date == null) {
+            return null;
+        }
+
+        if (date instanceof java.sql.Date) {
+            return ((java.sql.Date) date).toLocalDate();
+        } else {
+            return Instant.ofEpochMilli(date.getTime()).atZone(zone).toLocalDate();
+
+        }
+    }
+
+    public static Date toDate(LocalDate localDate) {
+        if (localDate == null) {
+            return null;
+        } else {
+            Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.of("GMT")));
+            return Date.from(instant);
         }
     }
 

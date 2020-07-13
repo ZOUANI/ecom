@@ -19,10 +19,10 @@ public class Product {
      private String size ;
      private Integer qteStock ;
      private String label ;
-     private BigDecimal price ;
      private BigDecimal weight ;
-     private String reference ;
      private String color ;
+     private BigDecimal price ;
+     private String reference ;
 
      @OneToMany(mappedBy = "product")
      private List<OrderLine> orderLines ;
@@ -82,9 +82,11 @@ public class Product {
      public List<OrderLine> getOrderLines(){
           return this.orderLines;
      }
-     public void setOrderLines(List<OrderLine> orderLines){
+     
+      public void setOrderLines(List<OrderLine> orderLines){
           this.orderLines = orderLines;
      }
+     
 
 
 

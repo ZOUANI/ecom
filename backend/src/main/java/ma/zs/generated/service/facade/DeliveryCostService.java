@@ -21,12 +21,6 @@ public interface DeliveryCostService {
      *         found in database return  null.
      */
 	DeliveryCost findById(Long id);
-     
-     /**
-     * delete DeliveryCost from database
-     * @param id - id of DeliveryCost to be deleted
-     * 
-     */
 	void deleteById(Long id);
 
 	List<DeliveryCost> findByCityName(String name);
@@ -68,14 +62,13 @@ public interface DeliveryCostService {
      * @return 1 if DeliveryCost deleted successfully, If the DeliveryCost can't be deleted return negative int
      */
 	int delete(DeliveryCost deliveryCost);
-
-
     
-
-     
 	/**
      * search for DeliveryCost in by some criteria
      * @return the searhed list DeliveryCost 
      */
 	List<DeliveryCost> findByCriteria( DeliveryCostVo deliveryCostVo);
+
+    List<DeliveryCost> findByCityIdAndDeliverySuperAdminId(Long cityId,Long adminId);
+
 }

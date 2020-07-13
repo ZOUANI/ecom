@@ -1,7 +1,7 @@
 package ma.zs.generated.service.util;
- 
- 
- 
+
+
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,8 +9,8 @@ import java.util.Date;
 public class SearchUtil {
 
     public static Date convert(String date) {
-    	if(StringUtil.isEmpty(date))
-    		return null;
+        if(StringUtil.isEmpty(date))
+            return null;
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             return simpleDateFormat.parse(date);
@@ -75,7 +75,7 @@ public class SearchUtil {
         return addConstraintMinMax(beanAbrev, atributeName, converte(valueMin), converte(valueMax));
     }
 
-     public static String addConstraintMinMaxDate(String beanAbrev, String atributeName, String valueMin, String valueMax) {
+    public static String addConstraintMinMaxDate(String beanAbrev, String atributeName, String valueMin, String valueMax) {
         return addConstraintMinMaxDate(beanAbrev, atributeName, convert(valueMin), convert(valueMax));
     }
 }

@@ -122,8 +122,15 @@ public class DeliveryCostRest {
     @PostMapping("/search")
 	public List<DeliveryCostVo> findByCriteria(@RequestBody DeliveryCostVo deliveryCostVo){
        return deliveryCostConverter.toVo(deliveryCostService.findByCriteria(deliveryCostVo));
-	}	
-	public DeliveryCostConverter getDeliveryCostConverter(){
+	}
+	@ApiOperation("delivery by city and admin")
+	@GetMapping("/cityId/{cityId}/adminId/{adminId}")
+	public List<DeliveryCostVo> findByCityIdAndDeliverySuperAdminId(@PathVariable Long cityId, @PathVariable Long adminId) {
+		return deliveryCostConverter.toVo(deliveryCostService.findByCityIdAndDeliverySuperAdminId(cityId,adminId));
+
+	}
+
+		public DeliveryCostConverter getDeliveryCostConverter(){
 		return deliveryCostConverter;
 	}
  

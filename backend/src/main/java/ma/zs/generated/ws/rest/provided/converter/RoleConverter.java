@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ma.zs.generated.service.util.*;
 
-  
 import ma.zs.generated.bean.Role; 
 import ma.zs.generated.ws.rest.provided.vo.RoleVo;
 
 @Component 
 public class RoleConverter extends AbstractConverter<Role,RoleVo>{ 
-	
 
 	public  RoleConverter(){
 		init(true);
@@ -49,12 +47,7 @@ public class RoleConverter extends AbstractConverter<Role,RoleVo>{
  
  		}
  	}
-	public void init(Boolean value) { 
+	public void init(boolean value) { 
 	}
 
-
-	
-
-	
-	
-}
+} 

@@ -12,9 +12,8 @@ import ma.zs.generated.bean.Category;
 import ma.zs.generated.bean.Product;
 import ma.zs.generated.dao.CategoryProductDao;
 import ma.zs.generated.service.facade.CategoryProductService;
-import ma.zs.generated.service.facade.CategoryService;   
-import ma.zs.generated.service.facade.ProductService;   
-
+import ma.zs.generated.service.facade.CategoryService;
+import ma.zs.generated.service.facade.ProductService;
 import ma.zs.generated.ws.rest.provided.vo.CategoryProductVo;
 import ma.zs.generated.service.util.*;
 @Service
@@ -23,11 +22,10 @@ public class CategoryProductServiceImpl implements CategoryProductService {
    @Autowired
    private CategoryProductDao categoryProductDao;
    
-    @Autowired
+   @Autowired
     private CategoryService categoryService ;
-    @Autowired
+   @Autowired
     private ProductService productService ;
-
    @Autowired 
    private EntityManager entityManager; 
 
@@ -82,8 +80,6 @@ public class CategoryProductServiceImpl implements CategoryProductService {
 
 	@Override
 	public CategoryProduct findById(Long id){
-		 if(id==null)
-		  return null;
 		return categoryProductDao.getOne(id);
 	}
     
@@ -93,6 +89,9 @@ public class CategoryProductServiceImpl implements CategoryProductService {
    }
 	@Override	
 	public CategoryProduct save (CategoryProduct categoryProduct){
+		  CategoryProduct foundedCategoryProduct = findById(categoryProduct.getId()); 
+		       if(foundedCategoryProduct!=null)
+	          return null;	  
 	    
 	          if(categoryProduct.getCategory()!=null){
 				    Category category = categoryService.findByLabel(categoryProduct.getCategory().getLabel());
@@ -124,17 +123,17 @@ public class CategoryProductServiceImpl implements CategoryProductService {
 	}
 
 
-   @Override
-   public CategoryProduct update(CategoryProduct categoryProduct){
-     
-    
-		  CategoryProduct foundedCategoryProduct = findById(categoryProduct.getId()); 
-		       if(foundedCategoryProduct==null)
-	          return null;	  
-	  
-	   return  categoryProductDao.save(categoryProduct);
-     
-     }
+	@Override
+	public CategoryProduct update(CategoryProduct categoryProduct){
+
+
+		CategoryProduct foundedCategoryProduct = findById(categoryProduct.getId());
+		if(foundedCategoryProduct==null)
+			return null;
+
+		return  categoryProductDao.save(categoryProduct);
+
+	}
     
 	@Override
 	@Transactional
@@ -151,20 +150,20 @@ public class CategoryProductServiceImpl implements CategoryProductService {
 
 
 	public List<CategoryProduct> findByCriteria(CategoryProductVo categoryProductVo){
-      String query = "SELECT o FROM CategoryProduct o where 1=1 ";
-		 	 query += SearchUtil.addConstraint( "o", "id","=",categoryProductVo.getId());
-   if(categoryProductVo.getCategoryVo()!=null){
-     query += SearchUtil.addConstraint( "o", "category.id","=",categoryProductVo.getCategoryVo().getId());
-     query += SearchUtil.addConstraint( "o", "category.label","LIKE",categoryProductVo.getCategoryVo().getLabel());
-   }
-   
-   if(categoryProductVo.getProductVo()!=null){
-     query += SearchUtil.addConstraint( "o", "product.id","=",categoryProductVo.getProductVo().getId());
-     query += SearchUtil.addConstraint( "o", "product.reference","LIKE",categoryProductVo.getProductVo().getReference());
-   }
-   
-	 return entityManager.createQuery(query).getResultList();
+		String query = "SELECT o FROM CategoryProduct o where 1=1 ";
+		query += SearchUtil.addConstraint( "o", "id","=",categoryProductVo.getId());
+		if(categoryProductVo.getCategoryVo()!=null){
+			query += SearchUtil.addConstraint( "o", "category.id","=",categoryProductVo.getCategoryVo().getId());
+			query += SearchUtil.addConstraint( "o", "category.label","LIKE",categoryProductVo.getCategoryVo().getLabel());
+		}
+
+		if(categoryProductVo.getProductVo()!=null){
+			query += SearchUtil.addConstraint( "o", "product.id","=",categoryProductVo.getProductVo().getId());
+			query += SearchUtil.addConstraint( "o", "product.reference","LIKE",categoryProductVo.getProductVo().getReference());
+		}
+
+		return entityManager.createQuery(query).getResultList();
 	}
-	
+  
  
 }

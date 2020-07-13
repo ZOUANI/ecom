@@ -29,12 +29,6 @@ public interface DeliveryTypeService {
      *         found in database return  null.
      */
 	DeliveryType findById(Long id);
-     
-     /**
-     * delete DeliveryType from database
-     * @param id - id of DeliveryType to be deleted
-     * 
-     */
 	void deleteById(Long id);
 
     /**
@@ -64,9 +58,6 @@ public interface DeliveryTypeService {
      * @return 1 if DeliveryType deleted successfully, If the DeliveryType can't be deleted return negative int
      */
 	int delete(DeliveryType deliveryType);
-
-
-    
         /**
      * delete DeliveryType from database by label (reference)
      * 
@@ -74,8 +65,7 @@ public interface DeliveryTypeService {
      * @return 1 if DeliveryType deleted successfully
      */
 	int deleteByLabel(String label);
-
-     
+    
 	/**
      * search for DeliveryType in by some criteria
      * @return the searhed list DeliveryType 

@@ -6,12 +6,11 @@ import java.util.List;
 
 import ma.zs.generated.bean.Category;
 
-
 @Repository
-public interface CategoryDao extends JpaRepository<Category,Long> {
+public interface CategoryDao extends JpaRepository<Category, Long> {
 
 	Category findByLabel(String label);
-       int deleteByLabel(String label);
 
+	int deleteByLabel(String label);
 
 }

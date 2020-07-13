@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ma.zs.generated.service.util.*;
 
-  
 import ma.zs.generated.bean.City; 
 import ma.zs.generated.ws.rest.provided.vo.CityVo;
 
 @Component 
 public class CityConverter extends AbstractConverter<City,CityVo>{ 
-	
 
 	public  CityConverter(){
 		init(true);
@@ -24,10 +22,10 @@ public class CityConverter extends AbstractConverter<City,CityVo>{
       	City item = new City();
 			 if(StringUtil.isNotEmpty(vo.getName()))
                   item.setName(vo.getName());
-			 if(StringUtil.isNotEmpty(vo.getPostCode()))
-                  item.setPostCode(vo.getPostCode());
 			 if(StringUtil.isNotEmpty(vo.getId()))
                   item.setId(NumberUtil.toLong(vo.getId()));
+			 if(StringUtil.isNotEmpty(vo.getPostCode()))
+                  item.setPostCode(vo.getPostCode());
 
 
 		return item;
@@ -44,22 +42,17 @@ public class CityConverter extends AbstractConverter<City,CityVo>{
 			if(StringUtil.isNotEmpty(item.getName()))
 				vo.setName(item.getName());
 			
+			 if(item.getId()!=null)
+				vo.setId(NumberUtil.toString(item.getId()));
 			if(StringUtil.isNotEmpty(item.getPostCode()))
 				vo.setPostCode(item.getPostCode());
 			
-			 if(item.getId()!=null)
-				vo.setId(NumberUtil.toString(item.getId()));
 
  			return vo;
  
  		}
  	}
-	public void init(Boolean value) { 
+	public void init(boolean value) { 
 	}
 
-
-	
-
-	
-	
-}
+} 

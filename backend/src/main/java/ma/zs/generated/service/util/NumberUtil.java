@@ -42,6 +42,13 @@ public class NumberUtil {
             return Integer.parseInt(value);
         }
     }
+    public static Integer toInteger(String value) {
+        if (value == null || value.isEmpty()) {
+            return 0;
+        } else {
+            return Integer.parseInt(value);
+        }
+    }
 
     public static String toString(Double value) {
         if (value == null) {

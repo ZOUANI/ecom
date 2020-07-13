@@ -1,8 +1,10 @@
 package  ma.zs.generated.ws.rest.provided.facade;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,13 +31,13 @@ public class OrderLineRest {
 	@Autowired 
 	private OrderLineConverter orderLineConverter ;
 
-    @ApiOperation("Saves the specified orderLine")
-	@PostMapping("/")
-	public OrderLineVo save(@RequestBody OrderLineVo orderLineVo){
-		OrderLine orderLine= orderLineConverter.toItem(orderLineVo);
-	  orderLine=	orderLineService.save(orderLine);
-		return orderLineConverter.toVo(orderLine);
-	}
+//    @ApiOperation("Saves the specified orderLine")
+//	@PostMapping("/")
+//	public OrderLineVo save(@RequestBody OrderLineVo orderLineVo){
+//		OrderLine orderLine= orderLineConverter.toItem(orderLineVo);
+//	  orderLine=	orderLineService.save(orderLine);
+//		return orderLineConverter.toVo(orderLine);
+//	}
 
     @ApiOperation("Delete the specified orderLine")
 	@DeleteMapping("/")
@@ -71,29 +73,6 @@ public class OrderLineRest {
 
 
 
-    @ApiOperation("Finds a orderLine by reference of command")
-	@GetMapping("/command/reference/{reference}")
-	public List<OrderLineVo> findByCommandReference(@PathVariable String reference){
-		return orderLineConverter.toVo(orderLineService.findByCommandReference(reference));
-	}
-	
-	@ApiOperation("Deletes a orderLine by reference of command")
-	@DeleteMapping("/command/reference/{reference}")
-	public int deleteByCommandReference(@PathVariable String reference){
-		return orderLineService.deleteByCommandReference(reference);
-	}
-	
-	@ApiOperation("Finds orderLine by id of command")
-	@GetMapping("/command/id/{id}")
-	public List<OrderLineVo> findByCommandId(@PathVariable Long id){
-		return orderLineConverter.toVo(orderLineService.findByCommandId(id));
-	}
-	@ApiOperation("Deletes orderLine by id of command")
-	@DeleteMapping("/command/id/{id}")
-	public int deleteByCommandId(@PathVariable Long id){
-		return orderLineService.deleteByCommandId(id);
-	}
-     	
     @ApiOperation("Finds a orderLine by reference of product")
 	@GetMapping("/product/reference/{reference}")
 	public List<OrderLineVo> findByProductReference(@PathVariable String reference){
@@ -117,12 +96,37 @@ public class OrderLineRest {
 		return orderLineService.deleteByProductId(id);
 	}
      	
+    @ApiOperation("Finds a orderLine by reference of command")
+	@GetMapping("/command/reference/{reference}")
+	public List<OrderLineVo> findByCommandReference(@PathVariable String reference){
+		return orderLineConverter.toVo(orderLineService.findByCommandReference(reference));
+	}
+	
+	@ApiOperation("Deletes a orderLine by reference of command")
+	@DeleteMapping("/command/reference/{reference}")
+	public int deleteByCommandReference(@PathVariable String reference){
+		return orderLineService.deleteByCommandReference(reference);
+	}
+	
+	@ApiOperation("Finds orderLine by id of command")
+	@GetMapping("/command/id/{id}")
+	public List<OrderLineVo> findByCommandId(@PathVariable Long id){
+		return orderLineConverter.toVo(orderLineService.findByCommandId(id));
+	}
+	@ApiOperation("Deletes orderLine by id of command")
+	@DeleteMapping("/command/id/{id}")
+	public int deleteByCommandId(@PathVariable Long id){
+		return orderLineService.deleteByCommandId(id);
+	}
+     	
    
     @ApiOperation("Search orderLine by a specific criterion")
     @PostMapping("/search")
 	public List<OrderLineVo> findByCriteria(@RequestBody OrderLineVo orderLineVo){
        return orderLineConverter.toVo(orderLineService.findByCriteria(orderLineVo));
-	}	
+	}
+
+
 	public OrderLineConverter getOrderLineConverter(){
 		return orderLineConverter;
 	}

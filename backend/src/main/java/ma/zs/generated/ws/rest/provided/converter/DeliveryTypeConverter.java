@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ma.zs.generated.service.util.*;
 
-  
 import ma.zs.generated.bean.DeliveryType; 
 import ma.zs.generated.ws.rest.provided.vo.DeliveryTypeVo;
 
 @Component 
 public class DeliveryTypeConverter extends AbstractConverter<DeliveryType,DeliveryTypeVo>{ 
-	
 
 	public  DeliveryTypeConverter(){
 		init(true);
@@ -49,12 +47,7 @@ public class DeliveryTypeConverter extends AbstractConverter<DeliveryType,Delive
  
  		}
  	}
-	public void init(Boolean value) { 
+	public void init(boolean value) { 
 	}
 
-
-	
-
-	
-	
-}
+} 

@@ -4,19 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ma.zs.generated.service.util.*;
 
-  
 import ma.zs.generated.bean.Client; 
 import ma.zs.generated.ws.rest.provided.vo.ClientVo;
 
 @Component 
 public class ClientConverter extends AbstractConverter<Client,ClientVo>{ 
-	
-	   @Autowired
-         private CommandConverter commandConverter ;
-	   @Autowired
-         private CityConverter cityConverter ;
-    private Boolean city;
-    private Boolean commands;
+    @Autowired
+	private CityConverter cityConverter ;
+    private boolean  city;
+	    @Autowired
+		private CommandConverter commandConverter ;
+    private boolean commands;
 
 	public  ClientConverter(){
 		init(true);
@@ -30,6 +28,8 @@ public class ClientConverter extends AbstractConverter<Client,ClientVo>{
       	Client item = new Client();
 			 if(StringUtil.isNotEmpty(vo.getPhoneNumber()))
                   item.setPhoneNumber(vo.getPhoneNumber());
+			 if(StringUtil.isNotEmpty(vo.getAddress()))
+                  item.setAddress(vo.getAddress());
 			 if(StringUtil.isNotEmpty(vo.getLastName()))
                   item.setLastName(vo.getLastName());
 			 if(StringUtil.isNotEmpty(vo.getEmail()))
@@ -39,12 +39,10 @@ public class ClientConverter extends AbstractConverter<Client,ClientVo>{
 			 if(StringUtil.isNotEmpty(vo.getId()))
                   item.setId(NumberUtil.toLong(vo.getId()));
              if(vo.getCityVo()!=null && this.city)
-			     item.setCity(cityConverter.toItem(vo.getCityVo())) ;
+	              item.setCity(cityConverter.toItem(vo.getCityVo())) ;
 
 	         if(ListUtil.isNotEmpty(vo.getCommandsVo()) && this.commands)
                   item.setCommands(commandConverter.toItem(vo.getCommandsVo()));
-
-
 
 		return item;
  		}
@@ -60,6 +58,9 @@ public class ClientConverter extends AbstractConverter<Client,ClientVo>{
 			if(StringUtil.isNotEmpty(item.getPhoneNumber()))
 				vo.setPhoneNumber(item.getPhoneNumber());
 			
+			if(StringUtil.isNotEmpty(item.getAddress()))
+				vo.setAddress(item.getAddress());
+			
 			if(StringUtil.isNotEmpty(item.getLastName()))
 				vo.setLastName(item.getLastName());
 			
@@ -72,10 +73,11 @@ public class ClientConverter extends AbstractConverter<Client,ClientVo>{
 			 if(item.getId()!=null)
 				vo.setId(NumberUtil.toString(item.getId()));
             if(item.getCity()!=null && this.city) {
+				    cityConverter.init(false);
 				   vo.setCityVo(cityConverter.toVo(item.getCity())) ;
+			        cityConverter.init(true);
 			   } 
 	         if(ListUtil.isNotEmpty(item.getCommands()) && this.commands){
-				
 				 commandConverter.init(false);
                 vo.setCommandsVo(commandConverter.toVo(item.getCommands()));
               	 commandConverter.init(true);
@@ -85,38 +87,28 @@ public class ClientConverter extends AbstractConverter<Client,ClientVo>{
  
  		}
  	}
-	public void init(Boolean value) { 
+	public void init(boolean value) { 
        city = value;
        commands = value;
 	}
 
 
-	
-
-	
-	   public CommandConverter getCommandConverter(){
-		return this.commandConverter;
-	}  
-        public void setCommandConverter(CommandConverter commandConverter ){
-		 this.commandConverter = commandConverter;
-	}  
-	   public CityConverter getCityConverter(){
+	public CityConverter getCityConverter(){
 		return this.cityConverter;
 	}  
-        public void setCityConverter(CityConverter cityConverter ){
+    public void setCityConverter(CityConverter cityConverter ){
 		 this.cityConverter = cityConverter;
 	}  
-	
 	 public boolean  isCity(){
 		  return this.city;
 	 }
 	 public void  setCity(boolean city){
 		   this.city = city;
 	 }
-       public Boolean  isCommands(){
+       public boolean  isCommands(){
 		 return this.commands ;
 	   }
-		 public void  setCommands(Boolean commands ){
+		 public void  setCommands(boolean commands ){
             this.commands  = commands ;
 		 }
-}
+} 

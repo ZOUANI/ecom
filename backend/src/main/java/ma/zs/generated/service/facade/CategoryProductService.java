@@ -21,12 +21,6 @@ public interface CategoryProductService {
      *         found in database return  null.
      */
 	CategoryProduct findById(Long id);
-     
-     /**
-     * delete CategoryProduct from database
-     * @param id - id of CategoryProduct to be deleted
-     * 
-     */
 	void deleteById(Long id);
 
 	List<CategoryProduct> findByCategoryLabel(String label);
@@ -68,11 +62,7 @@ public interface CategoryProductService {
      * @return 1 if CategoryProduct deleted successfully, If the CategoryProduct can't be deleted return negative int
      */
 	int delete(CategoryProduct categoryProduct);
-
-
     
-
-     
 	/**
      * search for CategoryProduct in by some criteria
      * @return the searhed list CategoryProduct 

@@ -4,19 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ma.zs.generated.service.util.*;
 
-  
 import ma.zs.generated.bean.CategoryProduct; 
 import ma.zs.generated.ws.rest.provided.vo.CategoryProductVo;
 
 @Component 
 public class CategoryProductConverter extends AbstractConverter<CategoryProduct,CategoryProductVo>{ 
-	
-	   @Autowired
-         private CategoryConverter categoryConverter ;
-	   @Autowired
-         private ProductConverter productConverter ;
-    private Boolean category;
-    private Boolean product;
+    @Autowired
+	private CategoryConverter categoryConverter ;
+    private boolean  category;
+    @Autowired
+	private ProductConverter productConverter ;
+    private boolean  product;
 
 	public  CategoryProductConverter(){
 		init(true);
@@ -31,9 +29,9 @@ public class CategoryProductConverter extends AbstractConverter<CategoryProduct,
 			 if(StringUtil.isNotEmpty(vo.getId()))
                   item.setId(NumberUtil.toLong(vo.getId()));
              if(vo.getCategoryVo()!=null && this.category)
-			     item.setCategory(categoryConverter.toItem(vo.getCategoryVo())) ;
+	              item.setCategory(categoryConverter.toItem(vo.getCategoryVo())) ;
              if(vo.getProductVo()!=null && this.product)
-			     item.setProduct(productConverter.toItem(vo.getProductVo())) ;
+	              item.setProduct(productConverter.toItem(vo.getProductVo())) ;
 
 
 		return item;
@@ -50,48 +48,49 @@ public class CategoryProductConverter extends AbstractConverter<CategoryProduct,
 			 if(item.getId()!=null)
 				vo.setId(NumberUtil.toString(item.getId()));
             if(item.getCategory()!=null && this.category) {
+				    categoryConverter.init(false);
 				   vo.setCategoryVo(categoryConverter.toVo(item.getCategory())) ;
+			        categoryConverter.init(true);
 			   } 
             if(item.getProduct()!=null && this.product) {
+				    productConverter.init(false);
 				   vo.setProductVo(productConverter.toVo(item.getProduct())) ;
+			        productConverter.init(true);
 			   } 
 
  			return vo;
  
  		}
  	}
-	public void init(Boolean value) { 
+	public void init(boolean value) { 
        category = value;
        product = value;
 	}
 
 
-	
-
-	
-	   public CategoryConverter getCategoryConverter(){
+	public CategoryConverter getCategoryConverter(){
 		return this.categoryConverter;
 	}  
-        public void setCategoryConverter(CategoryConverter categoryConverter ){
+    public void setCategoryConverter(CategoryConverter categoryConverter ){
 		 this.categoryConverter = categoryConverter;
 	}  
-	   public ProductConverter getProductConverter(){
-		return this.productConverter;
-	}  
-        public void setProductConverter(ProductConverter productConverter ){
-		 this.productConverter = productConverter;
-	}  
-	
 	 public boolean  isCategory(){
 		  return this.category;
 	 }
 	 public void  setCategory(boolean category){
 		   this.category = category;
 	 }
+
+	public ProductConverter getProductConverter(){
+		return this.productConverter;
+	}  
+    public void setProductConverter(ProductConverter productConverter ){
+		 this.productConverter = productConverter;
+	}  
 	 public boolean  isProduct(){
 		  return this.product;
 	 }
 	 public void  setProduct(boolean product){
 		   this.product = product;
 	 }
-}
+} 

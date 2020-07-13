@@ -13,34 +13,40 @@ public class City {
      @GeneratedValue(strategy = GenerationType.AUTO)
      private Long id;
 
-     private String name ;
-     private String postCode ;
+     private String name;
+     private String postCode;
 
-
-     public City(){
-       super();
+     public City() {
+          super();
      }
 
-     public Long getId(){
+     public Long getId() {
           return this.id;
      }
-     public void setId(Long id){
+
+     public void setId(Long id) {
           this.id = id;
      }
-     public String getName(){
+
+     public String getName() {
           return this.name;
      }
-     public void setName(String name){
+
+     public void setName(String name) {
           this.name = name;
      }
-     public String getPostCode(){
+
+     public String getPostCode() {
           return this.postCode;
      }
-     public void setPostCode(String postCode){
+
+     public void setPostCode(String postCode) {
           this.postCode = postCode;
      }
 
-
+     @Override
+     public String toString() {
+          return "City [id=" + id + ", name=" + name + ", postCode=" + postCode + "]";
+     }
 
 }
-

@@ -29,12 +29,6 @@ public interface RoleService {
      *         found in database return  null.
      */
 	Role findById(Long id);
-     
-     /**
-     * delete Role from database
-     * @param id - id of Role to be deleted
-     * 
-     */
 	void deleteById(Long id);
 
     /**
@@ -64,9 +58,6 @@ public interface RoleService {
      * @return 1 if Role deleted successfully, If the Role can't be deleted return negative int
      */
 	int delete(Role role);
-
-
-    
         /**
      * delete Role from database by authority (reference)
      * 
@@ -74,8 +65,7 @@ public interface RoleService {
      * @return 1 if Role deleted successfully
      */
 	int deleteByAuthority(String authority);
-
-     
+    
 	/**
      * search for Role in by some criteria
      * @return the searhed list Role 

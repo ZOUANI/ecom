@@ -1,80 +1,85 @@
-package  ma.zs.generated.ws.rest.provided.vo;
+package ma.zs.generated.ws.rest.provided.vo;
 
-import java.math.BigDecimal;   
+import java.math.BigDecimal;
 
 public class OrderLineVo {
 
-     private String price ;
-   
-     private String id ;
-   
+    private String qte;
 
-	private CommandVo commandVo ;
-	private ProductVo productVo ;
+    private String id;
+    private String price;
 
 
-     private String priceMax ;
-     private String priceMin ;
-
- public OrderLineVo(){
-       super();
-     }
+    private ProductVo productVo;
+    private CommandVo commandVo;
 
 
-     public String getPrice(){
-          return this.price;
-     }
-      public void setPrice(String price){
-          this.price = price;
-     }
+    private String qteMax;
+    private String qteMin;
+
+    public OrderLineVo() {
+        super();
+    }
 
 
-     public String getId(){
-          return this.id;
-     }
-      public void setId(String id){
-          this.id = id;
-     }
+    public String getQte() {
+        return this.qte;
+    }
+
+    public void setQte(String qte) {
+        this.qte = qte;
+    }
 
 
+    public String getId() {
+        return this.id;
+    }
 
-      public String getPriceMax(){
-          return this.priceMax;
-     }
-     
-      public String getPriceMin(){
-          return this.priceMin;
-     }
-
-     public void setPriceMax(String priceMax){
-          this.priceMax = priceMax;
-     }
-
-     public void setPriceMin(String priceMin){
-          this.priceMin = priceMin;
-     }
-     
-     
-     
-
-      public CommandVo getCommandVo(){
-          return this.commandVo;
-     }
-       
-     public void setCommandVo(CommandVo commandVo){
-          this.commandVo = commandVo;
-     }
-   
-      public ProductVo getProductVo(){
-          return this.productVo;
-     }
-       
-     public void setProductVo(ProductVo productVo){
-          this.productVo = productVo;
-     }
-   
+    public void setId(String id) {
+        this.id = id;
+    }
 
 
+    public String getQteMax() {
+        return this.qteMax;
+    }
+
+    public String getQteMin() {
+        return this.qteMin;
+    }
+
+    public void setQteMax(String qteMax) {
+        this.qteMax = qteMax;
+    }
+
+    public void setQteMin(String qteMin) {
+        this.qteMin = qteMin;
+    }
+
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public ProductVo getProductVo() {
+        return this.productVo;
+    }
+
+    public void setProductVo(ProductVo productVo) {
+        this.productVo = productVo;
+    }
+
+    public CommandVo getCommandVo() {
+        return this.commandVo;
+    }
+
+    public void setCommandVo(CommandVo commandVo) {
+        this.commandVo = commandVo;
+    }
 
 
 }

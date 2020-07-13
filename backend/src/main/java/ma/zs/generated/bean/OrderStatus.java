@@ -16,9 +16,12 @@ public class OrderStatus {
      private String label ;
 
 
+
      public OrderStatus(){
        super();
      }
+
+
 
      public Long getId(){
           return this.id;

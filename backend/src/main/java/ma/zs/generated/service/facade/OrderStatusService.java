@@ -29,12 +29,6 @@ public interface OrderStatusService {
      *         found in database return  null.
      */
 	OrderStatus findById(Long id);
-     
-     /**
-     * delete OrderStatus from database
-     * @param id - id of OrderStatus to be deleted
-     * 
-     */
 	void deleteById(Long id);
 
     /**
@@ -64,9 +58,6 @@ public interface OrderStatusService {
      * @return 1 if OrderStatus deleted successfully, If the OrderStatus can't be deleted return negative int
      */
 	int delete(OrderStatus orderStatus);
-
-
-    
         /**
      * delete OrderStatus from database by label (reference)
      * 
@@ -74,8 +65,7 @@ public interface OrderStatusService {
      * @return 1 if OrderStatus deleted successfully
      */
 	int deleteByLabel(String label);
-
-     
+    
 	/**
      * search for OrderStatus in by some criteria
      * @return the searhed list OrderStatus 

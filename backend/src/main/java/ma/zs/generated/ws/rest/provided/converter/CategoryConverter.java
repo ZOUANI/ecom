@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ma.zs.generated.service.util.*;
 
-  
 import ma.zs.generated.bean.Category; 
 import ma.zs.generated.ws.rest.provided.vo.CategoryVo;
 
 @Component 
 public class CategoryConverter extends AbstractConverter<Category,CategoryVo>{ 
-	
 
 	public  CategoryConverter(){
 		init(true);
@@ -49,12 +47,7 @@ public class CategoryConverter extends AbstractConverter<Category,CategoryVo>{
  
  		}
  	}
-	public void init(Boolean value) { 
+	public void init(boolean value) { 
 	}
 
-
-	
-
-	
-	
-}
+} 
