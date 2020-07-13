@@ -8,6 +8,8 @@ List of commandes to run before using the generated Angular:
 >npm install primeicons --save
 >
 >npm install @angular/animations --save
+>
+>npm install chart.js --save
 
 You can run the angular project using:
 >ng serve -o --port 4201

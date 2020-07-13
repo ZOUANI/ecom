@@ -77,6 +77,7 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 
 
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { ChartModule } from 'primeng/chart';
 
 import {MenuModule} from 'primeng/menu';
 import { TableModule } from 'primeng/table';
@@ -181,7 +182,8 @@ import {MatButtonModule} from '@angular/material/button';
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
-        MatButtonModule
+        MatButtonModule,
+        ChartModule
     ],
     providers: [],
     bootstrap: [AppComponent]
