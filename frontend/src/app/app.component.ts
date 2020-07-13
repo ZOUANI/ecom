@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import {AuthService} from './controller/service/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -10,14 +11,15 @@ export class AppComponent {
     title = 'frontend';
     sidebarItems: MenuItem[];
     openBar: Boolean;
+    user: any;
 
     notifications: string[];  // contain the notifications to show
     badgeNumber: number;      // contain the number of notifications , if =0 the badge won't show
     settingItems: MenuItem[];  // contain items for the setting menu on nav bar
 
-    constructor() {
+    constructor(private authService: AuthService) {
         this.openBar = false;
-
+        this.user = JSON.parse(localStorage.getItem('item'));
         // to change icons , change the icon value on the array below to one of the font awesome classes
         this.sidebarItems = [{
             items: [

@@ -21,11 +21,9 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(f.value).subscribe(data => {
-
       localStorage.setItem('user', JSON.stringify(data));
       // tslint:disable-next-line:max-line-length
       this.router.navigate(['dashboard']).then((_) => this.toastrService.success(`${data.lastName} ${data.firstName}`, 'Authentication successful', { timeOut: 5000 }));
-
     }, (error: HttpErrorResponse) => this.toastrService.error(error.error.message, 'Authentication failed', { timeOut: 1500 }));
   }
 }
